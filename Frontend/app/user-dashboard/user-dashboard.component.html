@@ -1,0 +1,75 @@
+<div class="container py-5">
+  <h2 class="mb-4" style="color: purple;">Welcome, {{ username }}!</h2>
+  <h4 class="mb-3" style="color: #5dade2;">Available Products</h4>
+
+  <!-- Filter Section -->
+  <div class="row mb-4">
+    <div class="col-md-3">
+      <label for="category" class="form-label">Category</label>
+      <select
+        id="category"
+        class="form-select"
+        [(ngModel)]="selectedCategory"
+      >
+        <option value="">All Categories</option>
+        <option *ngFor="let category of categories" [value]="category">
+          {{ category }}
+        </option>
+      </select>
+    </div>
+
+    <div class="col-md-3">
+      <label class="form-label">Min Price</label>
+      <input type="number" class="form-control" [(ngModel)]="minPrice" placeholder="0" />
+    </div>
+
+    <div class="col-md-3">
+      <label class="form-label">Max Price</label>
+      <input type="number" class="form-control" [(ngModel)]="maxPrice" placeholder="9999999" />
+    </div>
+
+    <div class="col-md-3 d-flex align-items-end">
+      <button class="btn btn-primary w-100" (click)="applyFilters()">Search</button>
+    </div>
+  </div>
+
+  <!-- Products Display -->
+<div class="row">
+  <div
+    class="col-md-4 mb-4"
+    *ngFor="let product of products | paginate: { itemsPerPage: 6, currentPage: page }"
+  >
+    <div class="card h-100 shadow-sm border-primary">
+      <div class="card-body" style="color: purple;">
+        <h5 class="card-title">{{ product.productName }}</h5>
+        <p class="card-text">Category: {{ product.category }}</p>
+        <p class="text-muted">₹{{ product.price }}</p>
+
+        <!-- Cart Control -->
+        <div class="d-flex align-items-center justify-content-between mt-3">
+          <button class="btn btn-outline-danger btn-sm" (click)="removeFromCart(product)">
+            ➖
+          </button>
+
+          <span class="mx-2">
+            Quantity: {{ cart[product.productId]?.quantity || 0 }}
+          </span>
+
+          <button class="btn btn-outline-success btn-sm" (click)="addToCart(product)">
+            ➕
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <pagination-controls
+    class="mt-4"
+    (pageChange)="page = $event"
+    previousLabel="← Prev"
+    nextLabel="Next →"
+  ></pagination-controls>
+</div>
+

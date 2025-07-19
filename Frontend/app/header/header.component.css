@@ -1,0 +1,16 @@
+.custom-link {
+  color: #6f42c1 !important;   /* Purple color */
+  text-decoration: underline;  /* Underline text */
+  font-weight: normal;         /* Not bold */
+}
+
+.custom-link:hover {
+  color: #5a339e;              /* Slightly darker purple on hover */
+  text-decoration: none;       /* Optional: remove underline on hover */
+}
+
+.disabled-link {
+  pointer-events: none;   /* disables clicks */
+  opacity: 0.6;           /* makes it look slightly grayed out */
+  cursor: default;        /* changes mouse icon */
+}

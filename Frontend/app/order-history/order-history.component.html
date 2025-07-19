@@ -1,0 +1,30 @@
+<h2 class="text-center mb-4" style="color: #6f42c1;">Order History</h2>
+
+<div class="table-responsive">
+  <table class="table table-bordered table-hover text-center" style="border: 2px solid #0d6efd;">
+    <thead class="table-light">
+      <tr>
+        <th style="color: #6f42c1;">Bill No</th>
+        <th style="color: #6f42c1;">Created At</th>
+        <th style="color: #6f42c1;">Payment Type</th>
+        <th style="color: #6f42c1;">Delivered</th>
+        <th style="color: #6f42c1;">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let order of orders">
+        <td>{{ order.billNo }}</td>
+        <td>{{ order.createdAt | date: 'short' }}</td>
+        <td>{{ order.paymentType }}</td>
+        <td>
+          <span class="badge" [ngClass]="order.delivered ? 'bg-success' : 'bg-warning'">
+            {{ order.delivered ? 'Yes' : 'No' }}
+          </span>
+        </td>
+        <td>
+          <button class="btn btn-sm btn-primary" (click)="viewDetails(order.orderId)">View Details</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

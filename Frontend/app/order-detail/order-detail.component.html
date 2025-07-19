@@ -1,0 +1,65 @@
+<div class="container py-4">
+  <!-- Back Button -->
+  <button class="btn btn-outline-primary mb-3" (click)="goBack()">
+    ← Back to Order History
+  </button>
+
+  <!-- Order Header -->
+  <div class="card shadow-sm border-primary mb-4">
+    <div class="card-body">
+      <h3 class="card-title text-center text-purple mb-3">
+        Order #{{ orderDetails?.orderId }}
+      </h3>
+      <div class="row text-center">
+        <div class="col-md-3 mb-2">
+          <strong class="text-primary">Bill No:</strong><br />
+          {{ orderDetails?.billNo }}
+        </div>
+        <div class="col-md-3 mb-2">
+          <strong class="text-primary">Created At:</strong><br />
+          {{ orderDetails?.createdAt | date: 'medium' }}
+        </div>
+        <div class="col-md-3 mb-2">
+          <strong class="text-primary">Payment Type:</strong><br />
+          {{ orderDetails?.paymentType | titlecase }}
+        </div>
+        <div class="col-md-3 mb-2">
+          <strong class="text-primary">Delivered:</strong><br />
+          <span class="badge" [ngClass]="orderDetails?.delivered ? 'bg-success' : 'bg-warning'">
+            {{ orderDetails?.delivered ? 'Yes' : 'No' }}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Products Table -->
+  <table class="table table-bordered table-hover text-center" style="border: 2px solid #0d6efd;">
+    <thead class="table-primary">
+      <tr>
+        <th style="color: #6f42c1;">Product</th>
+        <th style="color: #6f42c1;">Category</th>
+        <th style="color: #6f42c1;">Price</th>
+        <th style="color: #6f42c1;">Quantity</th>
+        <th style="color: #6f42c1;">Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of orderDetails?.products">
+        <td>{{ product.productName }}</td>
+        <td>{{ product.category }}</td>
+        <td>₹{{ product.price }}</td>
+        <td>{{ product.quantity }}</td>
+        <td>₹{{ product.price * product.quantity }}</td>
+      </tr>
+    </tbody>
+    <tfoot *ngIf="orderDetails?.products?.length">
+      <tr class="fw-bold">
+        <td colspan="4" class="text-end">Total:</td>
+        <td>
+          ₹{{ getTotalPrice() }}
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+</div>

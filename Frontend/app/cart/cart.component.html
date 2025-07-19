@@ -1,0 +1,63 @@
+<div class="container py-4">
+  <!-- Back Button -->
+  <button class="btn btn-link text-primary mb-3" (click)="goBack()">
+    ← Back to Dashboard
+  </button>
+
+  <!-- Heading -->
+  <h3 class="mb-4" style="color: #6f42c1;">Your Cart</h3>
+
+  <!-- Cart Items Table -->
+  <div *ngIf="hasItems; else emptyCart">
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped text-center" style="border: 2px solid #0d6efd;">
+        <thead class="table-light">
+          <tr>
+            <th style="color: #6f42c1;">Product</th>
+            <th style="color: #6f42c1;">Category</th>
+            <th style="color: #6f42c1;">Price</th>
+            <th style="color: #6f42c1;">Quantity</th>
+            <th style="color: #6f42c1;">Total</th>
+            <th style="color: #6f42c1;">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of cart | keyvalue">
+            <td>{{ item.value.product.productName }}</td>
+            <td>{{ item.value.product.category }}</td>
+            <td>₹{{ item.value.product.price }}</td>
+            <td>{{ item.value.quantity }}</td>
+            <td>₹{{ item.value.product.price * item.value.quantity }}</td>
+            <td>
+              <button class="btn btn-sm btn-danger" (click)="removeProduct(item.value.product.productId)">
+                Remove
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Total & Place Order -->
+    <div class="d-flex justify-content-between align-items-center mt-4 px-2">
+      <h5 style="color: #6f42c1;">Total: ₹{{ totalPrice }}</h5>
+      <button class="btn btn-success" (click)="placeOrderNow()">Place Order</button>
+    </div>
+
+    <!-- Success Message -->
+    <div *ngIf="showSuccess" class="alert alert-success mt-3" role="alert">
+      {{ successMessage }}
+    </div>
+  </div>
+
+  <!-- Empty Cart Template -->
+  <ng-template #emptyCart>
+    <div class="text-center mt-4">
+      <p class="text-muted fs-5">Your cart is empty.</p>
+    </div>
+
+    <div *ngIf="showSuccess" class="alert alert-success mt-3" role="alert">
+      {{ successMessage }}
+    </div>
+  </ng-template>
+</div>

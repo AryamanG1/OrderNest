@@ -1,0 +1,110 @@
+<div class="container px-5 d-flex justify-content-center align-items-center min-vh-100 bg-light" style="background-color: #f3e8ff;">
+  <div class="card shadow-lg p-3 w-100 overflow-auto" 
+       style="max-width: 450px; border-radius: 1rem; border-top: 5px solid #6f42c1;">
+    <div class="card-body">
+      <h3 class="card-title text-center mb-4 fw-bold" style="color: #6f42c1;">Sign Up</h3>
+
+      <form (ngSubmit)="onSignup()" #signupForm="ngForm">
+        <!-- Username -->
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Username</label>
+          <input
+            type="text"
+            class="form-control form-control-lg"
+            name="username"
+            [(ngModel)]="signupData.username"
+            placeholder="Choose a username"
+            required />
+          <div *ngIf="validationErrors['username']" class="text-danger mt-1 small">
+            {{ validationErrors['username'] }}
+          </div>
+        </div>
+
+        <!-- Full Name -->
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Full Name</label>
+          <input
+            type="text"
+            class="form-control form-control-lg"
+            name="name"
+            [(ngModel)]="signupData.name"
+            placeholder="Enter full name"
+            required />
+          <div *ngIf="validationErrors['name']" class="text-danger mt-1 small">
+            {{ validationErrors['name'] }}
+          </div>
+        </div>
+
+        <!-- Email -->
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Email Address</label>
+          <input
+            type="email"
+            class="form-control form-control-lg"
+            name="email"
+            [(ngModel)]="signupData.email"
+            placeholder="Enter your email"
+            required />
+          <div *ngIf="validationErrors['email']" class="text-danger mt-1 small">
+            {{ validationErrors['email'] }}
+          </div>
+        </div>
+
+        <!-- Password -->
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Password</label>
+          <input
+            type="password"
+            class="form-control form-control-lg"
+            name="password"
+            [(ngModel)]="signupData.password"
+            placeholder="Create a password"
+            required />
+          <div *ngIf="validationErrors['password']" class="text-danger mt-1 small">
+            {{ validationErrors['password'] }}
+          </div>
+        </div>
+
+        <!-- Age -->
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Age</label>
+          <input
+            type="number"
+            class="form-control form-control-lg"
+            name="age"
+            [(ngModel)]="signupData.age"
+            placeholder="Enter your age"
+            required />
+          <div *ngIf="validationErrors['age']" class="text-danger mt-1 small">
+            {{ validationErrors['age'] }}
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <button 
+          class="btn btn-lg w-100 mt-3 text-white" 
+          type="submit" 
+          [disabled]="!signupForm.form.valid"
+          style="background-color: #6f42c1;">
+          Sign Up
+        </button>
+
+        <!-- Success Message -->
+        <div *ngIf="successMessage" class="alert alert-success mt-3 text-center">
+          {{ successMessage + " Welcome to OrderNest " }}
+        </div>
+
+        <!-- General Error Message -->
+        <div *ngIf="errorMessage" class="alert alert-danger mt-3 text-center">
+          Sign Up Failed: {{ errorMessage }}
+        </div>
+
+        <!-- Login link -->
+        <div class="text-center mt-4">
+          <span>Already have an account?</span>
+          <a routerLink="/login" class="text-decoration-none fw-semibold" style="color: #6f42c1;"> Login</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

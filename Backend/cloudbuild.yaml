@@ -1,0 +1,36 @@
+steps:
+  # Step 1: Build Docker image from the JAR using Dockerfile
+  - name: gcr.io/cloud-builders/docker
+    id: Build
+    args:
+      - build
+      - -t
+      - $_REGION.pkg.dev/$PROJECT_ID/techgig-cicd/$_IMAGE:$SHORT_SHA
+      - .
+
+  # Step 2: Push the Docker image to Artifact Registry
+  - name: gcr.io/cloud-builders/docker
+    id: Push
+    args:
+      - push
+      - $_REGION.pkg.dev/$PROJECT_ID/techgig-cicd/$_IMAGE:$SHORT_SHA
+
+  # Step 3: Deploy image to Cloud Run
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk
+    id: Deploying to Cloud Run
+    entrypoint: gcloud
+    args:
+      - run
+      - deploy
+      - $_SERVICE_NAME
+      - --image=us-east4-docker.pkg.dev/$PROJECT_ID/techgig-cicd/$_IMAGE:$SHORT_SHA
+      - --region=$_REGION
+      - --platform=managed
+      - --allow-unauthenticated
+
+# Specifying the image that we will be saving to the Container Registry
+images:
+  - $_REGION.pkg.dev/$PROJECT_ID/techgig-cicd/$_IMAGE:$SHORT_SHA
+
+# Giving the timeout period for this entire file
+timeout: '2000s'
