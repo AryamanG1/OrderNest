@@ -53,16 +53,19 @@
 ---
 
 ## Domain Model Class Diagram	
+The Domain Model Class Diagram illustrates the domain entities, their attributes, and relationships within the Spring Boot application's architecture. It serves as a blueprint for the domain layer, guiding the structure of business logic and data persistence.
 ![alt text](Domain-Model-Class-Diagram.png)
 
 ---
 
 ## Secure Request Processing in Spring Boot
+The Sequence Diagram depicts a secure request processing in a Spring Boot application using Spring Security and JWT. The diagram illustrates the flow of authentication and authorization, including token generation, validation, and secure access to protected resources.
 ![alt text](JWT-Token-Lifecycle.png)
 
 ---
 
 ## Cloud-Native Deployment Pipeline 
+The below diagram is the Cloud-Native CI/CD Deployment Pipeline of the OrderNest service on Google Cloud Platform (GCP), leveraging Cloud Build, Cloud Run, Cloud VPC, and Cloud SQL for automated integration, secure networking, and scalable service deployment.
 ![alt text](Cloud-Native-Pipeline-OrderNest.png)
 
 ---
