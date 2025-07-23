@@ -68,6 +68,8 @@
 
 ---
 
+
+
 ## Cloud-Native Deployment Pipeline 
 **The below diagram is the Cloud-Native CI/CD Deployment Pipeline of the OrderNest service on Google Cloud Platform (GCP), leveraging Cloud Build, Cloud Run, Cloud VPC, and Cloud SQL for automated integration, secure networking, and scalable service deployment.**
 
