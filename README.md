@@ -51,8 +51,6 @@
 ![Angular](https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white) ![Bootstrap](https://img.shields.io/badge/bootstrap-%238511FA.svg?style=for-the-badge&logo=bootstrap&logoColor=white)
 
 ---
-## ER Diagram 
-![alt text](ER-OrderNest.png)
 
 ## Domain Model Class Diagram	
 **The Domain Model Class Diagram illustrates the domain entities, their attributes, and relationships within the Spring Boot application's architecture. It serves as a blueprint for the domain layer, guiding the structure of business logic and data persistence.**
@@ -67,8 +65,6 @@
 ![alt text](JWT-Token-Lifecycle.png)
 
 ---
-
-
 
 ## Cloud-Native Deployment Pipeline 
 **The below diagram is the Cloud-Native CI/CD Deployment Pipeline of the OrderNest service on Google Cloud Platform (GCP), leveraging Cloud Build, Cloud Run, Cloud VPC, and Cloud SQL for automated integration, secure networking, and scalable service deployment.**
