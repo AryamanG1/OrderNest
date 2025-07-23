@@ -51,6 +51,8 @@
 ![Angular](https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white) ![Bootstrap](https://img.shields.io/badge/bootstrap-%238511FA.svg?style=for-the-badge&logo=bootstrap&logoColor=white)
 
 ---
+## ER Diagram 
+![alt text](ER-OrderNest.png)
 
 ## Domain Model Class Diagram	
 **The Domain Model Class Diagram illustrates the domain entities, their attributes, and relationships within the Spring Boot application's architecture. It serves as a blueprint for the domain layer, guiding the structure of business logic and data persistence.**
