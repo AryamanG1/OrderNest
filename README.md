@@ -1,5 +1,5 @@
 # OrderNest
-**OrderNest** is a modular order management service designed to help users browse products, place orders, and track everything with ease.
+**OrderNest** is a scalable modular order management service designed to help users browse products, place orders, and track everything with ease.
 
 ## Features
 
